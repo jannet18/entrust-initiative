@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fullname: MyString
+  gender: MyString
+  date: 2024-08-02
+  contact: MyString
+  church: MyString
+  email: MyString
+  responsibility: MyText
+  description: MyText
+  motivation: MyText
+  challenges: MyText
+  availability: MyString
+  commitments: MyText
+  achievements: MyText
+  accepted_terms: false
+
+two:
+  fullname: MyString
+  gender: MyString
+  date: 2024-08-02
+  contact: MyString
+  church: MyString
+  email: MyString
+  responsibility: MyText
+  description: MyText
+  motivation: MyText
+  challenges: MyText
+  availability: MyString
+  commitments: MyText
+  achievements: MyText
+  accepted_terms: false

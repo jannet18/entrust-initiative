@@ -77,8 +77,11 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+# production:
+#   <<: *default
+#   database: entrust_initiative_server_production
+#   username: entrust_initiative_server
+#   password: <%= ENV["ENTRUST_INITIATIVE_SERVER_DATABASE_PASSWORD"] %>
 production:
-  <<: *default
-  database: entrust_initiative_server_production
-  username: entrust_initiative_server
-  password: <%= ENV["ENTRUST_INITIATIVE_SERVER_DATABASE_PASSWORD"] %>
+<<: *default
+database: <%= ENV['DATABASE_URL'] %>

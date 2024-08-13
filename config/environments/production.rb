@@ -11,10 +11,6 @@ Rails.application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
-# config/environments/production.rb
-config.assets.enabled = true
-config.assets.compile = false
-config.assets.digest = true
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local = false
@@ -33,6 +29,8 @@ config.assets.digest = true
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
+  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
@@ -46,7 +44,8 @@ config.assets.digest = true
   # config.assume_ssl = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  # config.force_ssl = true
+  Rails.application.routes.default_url_options[:protocol] = "http"
 
   # Log to STDOUT by default
   config.logger = ActiveSupport::Logger.new(STDOUT)

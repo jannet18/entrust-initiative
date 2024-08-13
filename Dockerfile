@@ -18,9 +18,12 @@ ENV RAILS_ENV="production" \
 FROM base as build
 
 # Install packages needed to build gems
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libpq-dev libvips pkg-config
+# RUN apt-get update -qq && \
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 
+    # apt-get install --no-install-recommends -y build-essential git libpq-dev libvips pkg-config
+# Install the correct Bundler version
+RUN gem install bundler:2.4.22
 # Install application gems
 COPY Gemfile Gemfile.lock ./
 RUN bundle install && \

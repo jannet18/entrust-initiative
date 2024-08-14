@@ -1,2 +1,2 @@
-class AccessToken < ApplicationRecord
+class AccessToken < ActiveRecord::Base
 end

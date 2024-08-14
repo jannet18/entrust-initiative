@@ -1,4 +1,4 @@
-class VolunteerController < ApplicationController
+class VolunteersController < ApplicationController
     def create
         volunteer = Volunteer.new(volunteer_params)
         if volunteer.save

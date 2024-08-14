@@ -1,4 +1,4 @@
-class OrderController < ApplicationController
+class OrdersController < ApplicationController
     def create
         @order = Order.new(order_params)
         if @order.save

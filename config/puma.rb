@@ -29,9 +29,14 @@ port ENV.fetch("PORT") { 3000 }
 environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Specifies the `pidfile` that Puma will use.
-pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
+# pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
-bind "tcp://0.0.0.0:3000"
+# bind "tcp://0.0.0.0:3000"
+# config/puma.rb
+# ssl_bind '0.0.0.0', '9292', {
+#   key: 'path/to/ssl/key.pem',
+#   cert: 'path/to/ssl/cert.pem'
+# }
 
 # if RAILS_ENV == 'development'
 #   ssl_bind(

@@ -1,2 +1,2 @@
-class Mpesa < ApplicationRecord
+class Mpesa < ActiveRecord::Base
 end

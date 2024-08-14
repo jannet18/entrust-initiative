@@ -1,4 +1,4 @@
-class ProgramController < ApplicationController
+class ProgramsController < ApplicationController
     def index 
         @programs = Program.all
         render json: @programs

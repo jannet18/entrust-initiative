@@ -1,4 +1,4 @@
-class Program < ApplicationRecord
+class Program < ActiveRecord::Base
     has_many :student_programs
     has_many :students, through: :student_programs
 

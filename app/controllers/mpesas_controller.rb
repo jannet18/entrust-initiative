@@ -1,6 +1,25 @@
 class MpesasController < ApplicationController
     require 'rest-client'
     rescue_from SocketError, with: :OfflineMode
+
+    def handle_response(response)
+      begin 
+        parsed_response = JSON.parse(response.to_str)
+      rescue JSON::ParserError => e
+        return [:error, {message: "Invalid JSON response", error: e.message}]
+      end
+
+      case response.code
+      when 500
+        [:error, parsed_response]
+      when 400
+        [:error, parsed_response]
+      when 200
+        [:success, parsed_response]
+      else
+        fail "Invalid response #{response.to_str} received."
+      end
+    end
   
     def stkpush 
       phoneNumber = params[:phoneNumber]
@@ -46,8 +65,8 @@ class MpesasController < ApplicationController
             fail "Invalid response #{response.to_str} received."
           end
         end
-      
-      render json: response
+      result = handle_response(response)
+      render json: result
     end 
   
     def polling_payment
@@ -90,8 +109,8 @@ class MpesasController < ApplicationController
             fail "Invalid response #{response.to_str} received."
           end
         end
-  
-      render json: response 
+        result = handle_response(response)
+        render json: result
     end
   
     private 
@@ -101,12 +120,13 @@ class MpesasController < ApplicationController
   
       @consumer_key =  ENV['MPESA_CONSUMER_KEY']
       @consumer_secret = ENV['MPESA_CONSUMER_SECRET']
-      @userpass = Base64::strict_encode64("#{@consumer_key}:#{@consumer_secret}")
+      @userpass = Base64.strict_encode64("#{@consumer_key}:#{@consumer_secret}")
       @headers = {
         Authorization: "Bearer #{@userpass}"
       }
       
       res = RestClient::Request.execute(url: @url, method: :post, headers:{Authorization: "Basic #{@userpass}"})
+      puts "Generate Access Token Response: #{res.body}"
       res
     end 
   

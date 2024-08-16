@@ -74,4 +74,6 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.action_controller.raise_on_missing_callback_actions = true
+  config.action_mailer.default_url_options = { host: 'localhost', port: 4000 }
+  config.navigational_formats = []
 end

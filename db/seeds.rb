@@ -24,11 +24,16 @@
 
 
 teams = Team.create([
-    {fullname: "", title: "Executive Director", image: ('/images/executive-director.jpeg')},
-    {fullname: "", title: "Associate Director", image: ('/images/baraka.jpeg')},
-    {fullname: "", title: "Financial Administration assistant", image: ('/images/entrust_financial_administrator.jpeg')},
-    {fullname: "", title: "Administrator", image: ('/images/entrust_administrator.jpeg')},
-    {fullname: "", title: "Enrollment Cordinator", image: ('/images/enroll_cordinator.jpeg')},
-    {fullname: "", title: "Media Cordinator", image: ('/images/media.jpeg')},
-    {fullname: "", title: "Events Director", image: ('/images/entrust_events_director.jpeg')},
+    {fullname: "", title: "Executive Director", image: ('https://res.cloudinary.com/dqvb49fnb/image/upload/v1723668679/executive-director_wdb6qt.jpg')},
+    {fullname: "", title: "Associate Director", image: ('https://res.cloudinary.com/dqvb49fnb/image/upload/v1723668158/baraka_oqgrth.jpg')},
+    {fullname: "", title: "Ass.Financial Administrator", image: ('https://res.cloudinary.com/dqvb49fnb/image/upload/v1723668158/entrust_financial_administartor_w0pr4l.jpg')},
+    {fullname: "", title: "Administrator", image: ('https://res.cloudinary.com/dqvb49fnb/image/upload/v1723668158/entrust_administrator_r3dxck.jpg')},
+    {fullname: "", title: "Enrollment Cordinator", image: ('https://res.cloudinary.com/dqvb49fnb/image/upload/v1723668158/enroll_cordinator_iednhm.jpg')},
+    {fullname: "", title: "Media Cordinator", image: ('https://res.cloudinary.com/dqvb49fnb/image/upload/v1723668158/media_rikxjb.jpg')},
+    {fullname: "", title: "Events Director", image: ('https://res.cloudinary.com/dqvb49fnb/image/upload/v1723668158/entrust_events_director_whp6oh.jpg')},
 ])
+
+# teams.each do |team_data|
+#     team = Team.new(fullname: team_data[:fullname], title: team_data[:title])
+#     team.upload_image(team_data[:image])
+# end

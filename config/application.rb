@@ -29,6 +29,17 @@ module EntrustInitiativeServer
     # Skip views, helpers and assets when generating a new resource.
   
     config.api_only = true
+
+    # Disable session store for API
+    # config.session_store :disabled
+    # config.middleware.delete ActionDispatch::Cookies
+    # config.middleware.delete ActionDispatch::Session::CookieStore
+    # config.middleware.delete ActionDispatch::Flash
+    
+    config.session_store :cookie_store, key: '_interslice_session'
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use config.session_store, config.session_options
+
     
     config.before_configuration do
       env_file = File.join(Rails.root, 'config', 'local_env.yml')

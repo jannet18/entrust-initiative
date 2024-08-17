@@ -309,7 +309,7 @@ Devise.setup do |config|
 
   # Ensure Devise works well in API mode
   config.navigational_formats = []
-  
+
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
@@ -317,11 +317,23 @@ Devise.setup do |config|
   config.jwt do |jwt|
     jwt.secret = Rails.application.credentials.fetch(:secret_key_base)
     jwt.dispatch_requests = [
-      ['POST', %r{^/login$}]
+      ['POST', %r{^/login$}],
     ]
     jwt.revocation_requests = [
-      ['DELETE', %r{^/logout$}]
+      ['DELETE', %r{^/logout$}],  
     ]
     jwt.expiration_time = 60.minutes.to_i
+  end
+
+  config.jwt do |jwt|
+    jwt.secret = Rails.application.secrets.secret_key_base
+    jwt.dispatch_requests = [
+      ['POST', %r{^/admins/login$}]
+    ]
+    jwt.revocation_requests = [
+      ['DELETE', %r{^/admins/logout$}]
+    ]
+    jwt.request_formats = { admin: [:json]}
+    jwt.expiration_time = 24.hours.to_i
   end
 end
